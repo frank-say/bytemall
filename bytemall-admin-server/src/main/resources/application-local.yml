@@ -1,0 +1,12 @@
+logging:
+  level:
+    root:  DEBUG
+  file:
+    path: ./logs
+
+spring:
+  profiles:
+    include: db-local, core-local
+
+jwt:
+  secret: "123456"

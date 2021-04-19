@@ -1,0 +1,83 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.frank</groupId>
+    <artifactId>bytemall</artifactId>
+    <version>0.0.1</version>
+    <packaging>pom</packaging>
+
+    <!-- 配置 -->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+        <maven.test.skip>true</maven.test.skip>
+    </properties>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.1.5.RELEASE</version>
+        <relativePath/>
+    </parent>
+
+    <modules>
+        <module>bytemall-core</module>
+        <module>bytemall-db</module>
+        <module>bytemall-api-server</module>
+        <module>bytemall-admin-server</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <!-- springboot web框架 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>2.3.1.RELEASE</version>
+            </dependency>
+
+            <!-- mybatis orm 框架 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>2.1.3</version>
+            </dependency>
+
+            <!-- ali druid 连接池 -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.22</version>
+            </dependency>
+
+            <!-- jdbc -->
+            <dependency>
+                <groupId>mysql</groupId>
+                <artifactId>mysql-connector-java</artifactId>
+                <version>8.0.20</version>
+            </dependency>
+
+            <!-- jwt -->
+            <dependency>
+                <groupId>com.auth0</groupId>
+                <artifactId>java-jwt</artifactId>
+                <version>3.10.3</version>
+            </dependency>
+
+            <!-- 微信小程序java sdk -->
+            <dependency>
+                <groupId>com.github.binarywang</groupId>
+                <artifactId>weixin-java-miniapp</artifactId>
+                <version>3.8.0</version>
+            </dependency>
+
+            <!-- spring boot 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.3.0</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+</project>

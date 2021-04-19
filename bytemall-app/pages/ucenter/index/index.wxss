@@ -1,0 +1,48 @@
+/* 头像昵称
+---------------------------------------------------------------- */
+.userinfo {
+  position: relative;
+  display: flex;
+  height: 140rpx;
+  align-items: center;
+  color: #999;
+  background: #fff;
+}
+
+.userinfo-avatar {
+  overflow: hidden;
+  width: 100rpx;
+  height: 100rpx;
+  margin: 20rpx;
+  border-radius: 20rpx;
+}
+
+/* 服务
+---------------------------------------------------------------- */
+.serve-content {
+  
+}
+
+.serve-card {
+  border-radius: 20rpx;
+}
+
+.serve-item {
+  padding: 0 20rpx;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.auth-btn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+}
+
+.serve-item-cell {
+  border-radius: 15rpx;
+}

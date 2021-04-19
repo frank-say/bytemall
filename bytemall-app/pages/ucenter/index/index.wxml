@@ -1,0 +1,32 @@
+<view class="container">
+  <!-- S 头像昵称 -->
+  <view class="userinfo">
+    <block calss="userinfo-opendata">
+      <view class="userinfo-avatar">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <open-data type="userNickName"></open-data>
+    </block>
+  </view>
+  <!-- E 头像昵称 -->
+
+  <!-- S 服务 -->
+  <view class="serve-content">
+    <view class="serve-card">
+      <van-cell-group title="核心服务" border="{{ false }}">
+        <!-- 授权手机号 -->
+        <view class="serve-item">
+          <van-cell custom-class="serve-item-cell" icon="phone-o" title="绑定手机" is-link border="{{ false }}" />
+          <button class="auth-btn" open-type="getPhoneNumber" bind:getphonenumber="bindPhoneNumber" />
+        </view>
+
+        <!-- 客服 -->
+        <view class="serve-item">
+          <van-cell custom-class="serve-item-cell" icon="comment-o" title="客服" is-link border="{{ false }}" />
+          <button class="auth-btn" open-type="contact" />
+        </view>
+      </van-cell-group>
+    </view>
+  </view>
+  <!-- E 服务 -->
+</view>

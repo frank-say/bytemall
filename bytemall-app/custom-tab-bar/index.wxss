@@ -1,0 +1,4 @@
+
+.van-tabbar-item .tabbar-item-index--van-tabbar-item__icon__inner {
+  font-size: 20px important;
+}

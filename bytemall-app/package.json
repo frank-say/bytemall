@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@beautywe/plugin-event": "^1.0.1",
+    "@beautywe/plugin-status": "^1.0.0",
+    "@vant/weapp": "^1.6.8",
+    "miniprogram-api-promise": "^1.0.4"
+  }
+}
