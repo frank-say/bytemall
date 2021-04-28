@@ -8,8 +8,8 @@ Component({
         url: '/pages/index/index'
 			},
       {
-        icon: 'shopping-cart-o',
-        text: '购物车',
+        icon: 'bag-o',
+        text: '购物袋',
         url: '/pages/cart/cart'
       },
       {
@@ -23,9 +23,15 @@ Component({
 	methods: {
 		onChange(event) {
 			this.setData({ active: event.detail });
-			wx.switchTab({
-				url: this.data.list[event.detail].url
-			});
+			if(event.detail === 1) { // 点击购物车tab
+				wx.navigateTo({
+					url: 'plugin-private://wx34345ae5855f892d/pages/shoppingCart/shoppingCart',
+				})
+			} else {
+				wx.switchTab({
+					url: this.data.list[event.detail].url
+				});
+			}
 		},
 
 		init() {

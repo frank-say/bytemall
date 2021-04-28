@@ -27,6 +27,28 @@
         <plugin type="com.itfsw.mybatis.generator.plugins.ExampleEnhancedPlugin"/>
         <!-- 数据Model属性对应Column获取插件 -->
         <plugin type="com.itfsw.mybatis.generator.plugins.ModelColumnPlugin"/>
+        <!-- 批量插入插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.BatchInsertPlugin">
+            <!-- warning: 插件生成的batchInsertSelective方法在使用时必须指定selective列，因为插件本身是预编译生成sql,对于批量数据是无法提供类似insertSelective非空插入的方式的-->
+            <!--
+            开启后可以实现官方插件根据属性是否为空决定是否插入该字段功能
+            ！需开启allowMultiQueries=true多条sql提交操作，所以不建议使用！插件默认不开启
+            -->
+            <property name="allowMultiQueries" value="false"/>
+        </plugin>
+        <!-- 存在即更新插件 -->
+        <plugin type="com.itfsw.mybatis.generator.plugins.UpsertPlugin">
+            <!--
+            支持upsertByExample，upsertByExampleSelective操作
+            ！需开启allowMultiQueries=true多条sql提交操作，所以不建议使用！插件默认不开启
+            -->
+            <property name="allowMultiQueries" value="false"/>
+            <!--
+            开启批量功能，支持batchUpsert,batchUpsertWithBLOBs,batchUpserSelective
+            ！这几个方法中无法支持IncrementsPlugin的方法！插件默认不开启
+            -->
+            <property name="allowBatchUpsert" value="fasle"/>
+        </plugin>
 
         <commentGenerator>
             <property name="suppressDate" value="true"/>
@@ -55,6 +77,9 @@
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
         <table tableName="bytemall_admin">
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
+        </table>
+        <table tableName="bytemall_access_token">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>

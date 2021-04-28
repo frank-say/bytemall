@@ -27,5 +27,11 @@
       }
     ]
   },
+  "plugins": {
+    "mini-shop-plugin": {
+    "version": "latest",
+    "provider": "wx34345ae5855f892d"
+    }
+  },
   "sitemapLocation": "sitemap.json"
 }

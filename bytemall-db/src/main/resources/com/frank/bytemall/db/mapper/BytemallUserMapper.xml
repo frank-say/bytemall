@@ -436,4 +436,281 @@
     </if>
     limit 1
   </select>
+  <insert id="batchInsert" keyColumn="id" keyProperty="id" parameterType="map" useGeneratedKeys="true">
+    insert into bytemall_user
+    (openid, unionid, gender, birthday, nickname, mobile, avatar, city, province, country, 
+      add_time, session_key, update_time, deleted)
+    values
+    <foreach collection="list" item="item" separator=",">
+      (#{item.openid,jdbcType=VARCHAR}, #{item.unionid,jdbcType=VARCHAR}, #{item.gender,jdbcType=TINYINT}, 
+        #{item.birthday,jdbcType=DATE}, #{item.nickname,jdbcType=VARCHAR}, #{item.mobile,jdbcType=VARCHAR}, 
+        #{item.avatar,jdbcType=VARCHAR}, #{item.city,jdbcType=VARCHAR}, #{item.province,jdbcType=VARCHAR}, 
+        #{item.country,jdbcType=VARCHAR}, #{item.addTime,jdbcType=TIMESTAMP}, #{item.sessionKey,jdbcType=VARCHAR}, 
+        #{item.updateTime,jdbcType=TIMESTAMP}, #{item.deleted,jdbcType=BIT})
+    </foreach>
+  </insert>
+  <insert id="batchInsertSelective" keyColumn="id" keyProperty="list.id" parameterType="map" useGeneratedKeys="true">
+    insert into bytemall_user (
+    <foreach collection="selective" item="column" separator=",">
+      ${column.escapedColumnName}
+    </foreach>
+    )
+    values
+    <foreach collection="list" item="item" separator=",">
+      (
+      <foreach collection="selective" item="column" separator=",">
+        <if test="'openid'.toString() == column.value">
+          #{item.openid,jdbcType=VARCHAR}
+        </if>
+        <if test="'unionid'.toString() == column.value">
+          #{item.unionid,jdbcType=VARCHAR}
+        </if>
+        <if test="'gender'.toString() == column.value">
+          #{item.gender,jdbcType=TINYINT}
+        </if>
+        <if test="'birthday'.toString() == column.value">
+          #{item.birthday,jdbcType=DATE}
+        </if>
+        <if test="'nickname'.toString() == column.value">
+          #{item.nickname,jdbcType=VARCHAR}
+        </if>
+        <if test="'mobile'.toString() == column.value">
+          #{item.mobile,jdbcType=VARCHAR}
+        </if>
+        <if test="'avatar'.toString() == column.value">
+          #{item.avatar,jdbcType=VARCHAR}
+        </if>
+        <if test="'city'.toString() == column.value">
+          #{item.city,jdbcType=VARCHAR}
+        </if>
+        <if test="'province'.toString() == column.value">
+          #{item.province,jdbcType=VARCHAR}
+        </if>
+        <if test="'country'.toString() == column.value">
+          #{item.country,jdbcType=VARCHAR}
+        </if>
+        <if test="'add_time'.toString() == column.value">
+          #{item.addTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'session_key'.toString() == column.value">
+          #{item.sessionKey,jdbcType=VARCHAR}
+        </if>
+        <if test="'update_time'.toString() == column.value">
+          #{item.updateTime,jdbcType=TIMESTAMP}
+        </if>
+        <if test="'deleted'.toString() == column.value">
+          #{item.deleted,jdbcType=BIT}
+        </if>
+      </foreach>
+      )
+    </foreach>
+  </insert>
+  <insert id="upsertSelective" keyColumn="id" keyProperty="id" parameterType="com.frank.bytemall.db.model.BytemallUser" useGeneratedKeys="true">
+    insert into bytemall_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="openid != null">
+        openid,
+      </if>
+      <if test="unionid != null">
+        unionid,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="sessionKey != null">
+        session_key,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="deleted != null">
+        deleted,
+      </if>
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sessionKey != null">
+        #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="unionid != null">
+        unionid = #{unionid,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=TINYINT},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="sessionKey != null">
+        session_key = #{sessionKey,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <insert id="upsert" keyColumn="id" keyProperty="id" parameterType="com.frank.bytemall.db.model.BytemallUser" useGeneratedKeys="true">
+    insert into bytemall_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      openid,
+      unionid,
+      gender,
+      birthday,
+      nickname,
+      mobile,
+      avatar,
+      city,
+      province,
+      country,
+      add_time,
+      session_key,
+      update_time,
+      deleted,
+    </trim>
+    values
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      #{openid,jdbcType=VARCHAR},
+      #{unionid,jdbcType=VARCHAR},
+      #{gender,jdbcType=TINYINT},
+      #{birthday,jdbcType=DATE},
+      #{nickname,jdbcType=VARCHAR},
+      #{mobile,jdbcType=VARCHAR},
+      #{avatar,jdbcType=VARCHAR},
+      #{city,jdbcType=VARCHAR},
+      #{province,jdbcType=VARCHAR},
+      #{country,jdbcType=VARCHAR},
+      #{addTime,jdbcType=TIMESTAMP},
+      #{sessionKey,jdbcType=VARCHAR},
+      #{updateTime,jdbcType=TIMESTAMP},
+      #{deleted,jdbcType=BIT},
+    </trim>
+    on duplicate key update 
+    <trim suffixOverrides=",">
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      openid = #{openid,jdbcType=VARCHAR},
+      unionid = #{unionid,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=TINYINT},
+      birthday = #{birthday,jdbcType=DATE},
+      nickname = #{nickname,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      session_key = #{sessionKey,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      deleted = #{deleted,jdbcType=BIT},
+    </trim>
+  </insert>
 </mapper>

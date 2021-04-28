@@ -17,12 +17,19 @@
   border-radius: 20rpx;
 }
 
-/* 服务
+/* 订单
 ---------------------------------------------------------------- */
-.serve-content {
-  
+.order-content {
+  padding: 20rpx 20rpx 0;
 }
 
+.order-content .van-tabbar {
+  border-radius: 20rpx;
+  padding: 20rpx 0;
+}
+
+/* 服务
+---------------------------------------------------------------- */
 .serve-card {
   border-radius: 20rpx;
 }

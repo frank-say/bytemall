@@ -8,7 +8,7 @@ const user: AppRouteModule = {
   component: LAYOUT,
   redirect: '/user/index',
   meta: {
-    icon: 'simple-icons:about-dot-me',
+    icon: 'ant-design:user-outlined',
     title: '客户管理',
   },
   children: [
@@ -18,7 +18,7 @@ const user: AppRouteModule = {
       component: () => import('/@/views/sys/user/index.vue'),
       meta: {
         title: '客户管理',
-        icon: 'simple-icons:about-dot-me',
+        icon: 'ant-design:user-outlined',
       },
     },
   ],

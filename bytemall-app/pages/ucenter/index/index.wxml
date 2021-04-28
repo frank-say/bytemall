@@ -10,10 +10,21 @@
   </view>
   <!-- E 头像昵称 -->
 
+  <!-- S 订单 -->
+  <view class="order-content">
+    <van-tabbar fixed="{{ false }}" border="{{ false }}" bind:change="onChange">
+      <van-tabbar-item icon="notes-o">全部订单</van-tabbar-item>
+      <van-tabbar-item icon="other-pay" >待付款</van-tabbar-item>
+      <van-tabbar-item icon="logistics">待收货</van-tabbar-item>
+      <van-tabbar-item icon="after-sale">退款/售后</van-tabbar-item>
+    </van-tabbar>
+  </view>
+  <!-- E 订单 -->
+
   <!-- S 服务 -->
   <view class="serve-content">
     <view class="serve-card">
-      <van-cell-group title="核心服务" border="{{ false }}">
+      <van-cell-group title="" border="{{ false }}">
         <!-- 授权手机号 -->
         <view class="serve-item">
           <van-cell custom-class="serve-item-cell" icon="phone-o" title="绑定手机" is-link border="{{ false }}" />
@@ -22,9 +33,15 @@
 
         <!-- 客服 -->
         <view class="serve-item">
-          <van-cell custom-class="serve-item-cell" icon="comment-o" title="客服" is-link border="{{ false }}" />
+          <van-cell custom-class="serve-item-cell" icon="chat-o" title="联系商家" is-link border="{{ false }}" />
           <button class="auth-btn" open-type="contact" />
         </view>
+
+        <!-- 售后 -->
+        <!-- <navigator class="serve-item" url='plugin-private://wx34345ae5855f892d/pages/orderDetail/orderDetail?orderId=1'>
+          <van-cell custom-class="serve-item-cell" icon="comment-o" title="我的售后" is-link border="{{ false }}" />
+        </navigator> -->
+
       </van-cell-group>
     </view>
   </view>

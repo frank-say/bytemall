@@ -35,4 +35,12 @@ public interface BytemallAdminMapper {
     int updateByPrimaryKeySelective(BytemallAdmin record);
 
     int updateByPrimaryKey(BytemallAdmin record);
+
+    int batchInsert(@Param("list") List<BytemallAdmin> list);
+
+    int batchInsertSelective(@Param("list") List<BytemallAdmin> list, @Param("selective") BytemallAdmin.Column ... selective);
+
+    int upsert(BytemallAdmin record);
+
+    int upsertSelective(BytemallAdmin record);
 }

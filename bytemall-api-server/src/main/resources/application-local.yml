@@ -6,7 +6,7 @@ logging:
 
 spring:
   profiles:
-    include: db-local, core-local
+    include: db-local, core-local, common-local
 
 jwt:
   secret: "abcdef"

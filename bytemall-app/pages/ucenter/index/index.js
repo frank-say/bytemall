@@ -17,6 +17,18 @@ Page({
       this.getTabBar().init();
     }
   },
+  onChange(e) {
+    const tabList = [
+      '',
+      'pendingPay',
+      'pendingRecevied',
+      'afterSale'
+    ]
+    const tabId = tabList[e.detail]
+    wx.navigateTo({
+      url: `plugin-private://wx34345ae5855f892d/pages/orderList/orderList?tabId=${tabId}`,
+    })
+  },
   bindPhoneNumber: function(e) {
     if (e.detail.errMsg !== "getPhoneNumber:ok") {
       // 拒绝授权

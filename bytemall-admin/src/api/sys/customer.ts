@@ -8,7 +8,7 @@ enum Api {
 }
 
 /**
- * @description: user login api
+ * @description: customer list api
  */
 export function listApi(params: GetCustomerListParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.get<ListResultModel>(

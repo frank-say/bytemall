@@ -19,6 +19,7 @@ const dashboard: AppRouteModule = {
       meta: {
         icon: 'ion:grid-outline',
         title: '首页',
+        affix: true,
       },
     },
   ],

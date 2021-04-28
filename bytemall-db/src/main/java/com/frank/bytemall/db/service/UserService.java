@@ -35,7 +35,7 @@ public class UserService {
     }
 
     public List<BytemallUser> list(String openid, String unionid, String nickname,
-                                   String mobile, Integer page, Integer size) {
+                                   String mobile, Integer page, Integer pageSize) {
         BytemallUserExample example = new BytemallUserExample();
         BytemallUserExample.Criteria criteria = example.or();
 
@@ -51,7 +51,9 @@ public class UserService {
         if (!StringUtils.isEmpty(unionid)) {
             criteria.andOpenidEqualTo(unionid);
         }
-        PageHelper.startPage(page, size);
+        example.setOrderByClause("id desc");
+
+        PageHelper.startPage(page, pageSize);
         return userMapper.selectByExample(example);
     }
 

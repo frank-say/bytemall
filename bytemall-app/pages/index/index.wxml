@@ -1,3 +1,5 @@
-<view>
-  待开发
+<view class="container">
+  <navigator wx:for="{{ list }}" wx:key="imgUrl" url="{{ item.path }}">
+    <image class="img" mode="widthFix" src="{{ item.imgUrl }}" />
+  </navigator>
 </view>

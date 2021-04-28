@@ -6,6 +6,8 @@ import event from '@beautywe/plugin-event/index.js';
 import { updateManager } from './utils/util'
 import { loginByCode } from './utils/user'
 
+const miniShopPlugin = requirePlugin('mini-shop-plugin');
+
 // 构建 BtApp 实例
 const app = new BtApp({
   wxp, // promise后的api挂载到App实例上
@@ -13,6 +15,9 @@ const app = new BtApp({
   onLaunch() {
     // 版本更新提示
     updateManager()
+
+    // 标准版交易组件初始化
+    miniShopPlugin.initApp(this, wx);
 
     // 登录
     this.login()

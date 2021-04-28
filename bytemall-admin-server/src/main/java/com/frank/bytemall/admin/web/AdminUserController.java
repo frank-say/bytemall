@@ -25,7 +25,7 @@ public class AdminUserController {
                            @RequestParam(required = false) String openid,
                            @RequestParam(required = false) String unionid,
                            @RequestParam(defaultValue = "1") Integer page,
-                           @RequestParam(defaultValue = "10") Integer size) {
-        return ResponseUtil.okList(userService.list(openid, unionid, nickname, mobile, page, size));
+                           @RequestParam(defaultValue = "10") Integer pageSize) {
+        return ResponseUtil.okList(userService.list(openid, unionid, nickname, mobile, page, pageSize));
     }
 }

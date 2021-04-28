@@ -58,7 +58,7 @@
       const userStore = useUserStore();
 
       const getUserInfo = computed(() => {
-        const { realName = '', desc } = userStore.getUserInfo || {};
+        const { realName = 'admin', desc } = userStore.getUserInfo || {};
         return { realName, desc };
       });
 

@@ -142,7 +142,8 @@ const transform: AxiosTransform = {
   responseInterceptorsCatch: (error: any) => {
     const errorLogStore = useErrorLogStoreWithOut();
     errorLogStore.addAjaxErrorInfo(error);
-    const { errCode, errMsg } = error.response.data || {};
+    const { status } = error.response;
+    const { errMsg } = error.response.data;
     try {
       createErrorModal({
         title: '错误',
@@ -151,7 +152,7 @@ const transform: AxiosTransform = {
     } catch (error) {
       throw new Error(error);
     }
-    checkStatus(errCode, errMsg);
+    checkStatus(status, errMsg);
     return Promise.reject(error);
   },
 };

@@ -1,2 +1,3 @@
-<!--pages/cart/cart.wxml-->
-<text>待开发</text>
+<view>
+  <button bindtap="goCart">购物袋</button>
+</view>
