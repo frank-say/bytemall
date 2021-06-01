@@ -55,6 +55,7 @@ public class ApiUserController {
         } else {
             // 更新sessionKey
             user.setSessionKey(sessionKey);
+            user.setUnionid(unionid);
             userService.updateById(user.getId(), user);
         }
 
