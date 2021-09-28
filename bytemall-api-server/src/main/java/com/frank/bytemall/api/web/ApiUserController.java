@@ -14,6 +14,7 @@ import com.frank.bytemall.db.model.BytemallUser;
 import com.frank.bytemall.db.service.UserService;
 import me.chanjar.weixin.common.error.WxErrorException;
 import org.springframework.beans.BeanUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -70,10 +71,10 @@ public class ApiUserController {
     public Object updateProfile(@LoginRequire Long userId, @RequestBody UserUpdateProfileParamVO userUpdateProfileParamVO) {
         BytemallUser user = new BytemallUser();
         user.setAvatar(userUpdateProfileParamVO.getAvatar());
-        user.setCity(userUpdateProfileParamVO.getCity());
-        user.setCountry(userUpdateProfileParamVO.getCountry());
-        user.setProvince(userUpdateProfileParamVO.getProvince());
-        user.setGender(userUpdateProfileParamVO.getGender());
+        user.setCity(userUpdateProfileParamVO.getCity() == null ? "" : userUpdateProfileParamVO.getCity());
+        user.setCountry(userUpdateProfileParamVO.getCountry() == null ? "" : userUpdateProfileParamVO.getCountry());
+        user.setProvince(userUpdateProfileParamVO.getProvince() == null ? "" : userUpdateProfileParamVO.getProvince());
+        user.setGender(userUpdateProfileParamVO.getGender() == null ? 0 : userUpdateProfileParamVO.getGender());
 
         userService.updateById(userId, user);
         return ResponseUtil.ok();
